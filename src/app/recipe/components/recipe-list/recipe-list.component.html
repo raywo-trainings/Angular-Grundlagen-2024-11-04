@@ -1,0 +1,16 @@
+<div class="grid-container">
+  @for (recipe of recipes; track $index) {
+    <div class="card">
+      ölaskldjf
+      <div class="card-header flex-container">
+        <img [src]="recipe.img" alt="{{ recipe.name }}">
+        <h3>{{ recipe.name }}</h3>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Schwierigkeit:</strong> {{ recipe.difficulty }}</p>
+        <p><strong>Dauer:</strong> {{ recipe.duration.value }} {{ recipe.duration.unit }}</p>
+      </div>
+    </div>
+  }
+</div>
