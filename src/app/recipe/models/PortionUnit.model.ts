@@ -1,10 +1,10 @@
 export enum PortionUnits {
   NONE = "",
-  GRAM = "Gramm",
+  GRAM = "g",
   CUBE = "Würfel",
-  MILLILITER = "Milliliter",
-  TEASPOON = "Teelöffel",
-  TABLESPOON = "Esslöffel",
+  MILLILITER = "ml",
+  TEASPOON = "TL",
+  TABLESPOON = "EL",
   BALL = "Kugel",
   PINCH = "Prise"
 }

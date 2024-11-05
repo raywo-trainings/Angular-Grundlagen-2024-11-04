@@ -1,7 +1,7 @@
 export enum Difficulty {
   EASY = "Einfach",
   MEDIUM = "Mittel",
-  HARD = "Schwierig"
+  HARD = "Schwer"
 }
 
 // Alternative zu enums in TypeScript. Auf diese Art sind „enums“ meist

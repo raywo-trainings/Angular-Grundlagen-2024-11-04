@@ -1,4 +1,4 @@
 export enum TimeUnit {
-  MINUTES = "Minuten",
-  HOURS = "Stunden"
+  MINUTES = "Min.",
+  HOURS = "Std."
 }
