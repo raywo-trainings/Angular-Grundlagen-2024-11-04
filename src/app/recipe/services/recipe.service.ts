@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Recipe, RecipeDTO} from '../models/Recipe.model';
 import {map, Observable} from 'rxjs';
 import {mapRecipeDTOToRecipe, mapRecipeToRecipeDTO} from '../mappings/recipe.mappings';
+import {environment} from '../../../environments/environment';
 
 
 type RecipeIdentifier = Recipe | string
@@ -61,7 +62,7 @@ export class RecipeService {
   private getUrl(identifier?: RecipeIdentifier): string {
     let id = this.extractID(identifier)
 
-    return `http://localhost:3000/recipes${id ? '/' + id : ""}`
+    return `${(environment.apiEndpoint)}${id ? '/' + id : ""}`
   }
 
 
