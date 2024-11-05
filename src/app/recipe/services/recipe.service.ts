@@ -15,8 +15,7 @@ export class RecipeService {
   }
 
 
-  public getRecipe(id: number): Recipe {
-    // TODO: Implement! (Zusatzaufgabe)
-    return this._recipes[0];
+  public getRecipe(id: string): Recipe | undefined {
+    return this._recipes.find(recipe => recipe.id === id);
   }
 }
