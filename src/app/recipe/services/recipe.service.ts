@@ -17,7 +17,7 @@ export class RecipeService {
 
 
   public getAllRecipes(): Observable<Recipe[]> {
-    return this.http.get<RecipeDTO[]>(this.apiUrl)
+    return this.http.get<RecipeDTO[]>(this.getUrl())
       .pipe(
         map(recipeDTOs => recipeDTOs.map(mapRecipeDTOToRecipe))
         // folgende Zeile ist funktional identisch zur obigen Zeile
