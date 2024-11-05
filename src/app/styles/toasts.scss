@@ -1,0 +1,21 @@
+.toast-container {
+  display: flex;
+  align-content: end;
+
+  .toast {
+    border: 1px black solid;
+    border-radius: 0.5rem;
+    z-index: 995;
+    padding: 1rem;
+    margin: 1rem;
+
+
+    .toast-title {
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+
+  }
+}

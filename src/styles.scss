@@ -6,6 +6,7 @@
 @import "app/styles/buttons";
 @import "app/styles/forms";
 @import "app/styles/layout";
+@import "app/styles/toasts";
 
 html, body {
   --primary-color: #ffed00;
@@ -86,7 +87,7 @@ main {
 .text-center {
   text-align: center;
 }
- 
+
 .grid-full {
   grid-column: 1 / span 3;
 }
