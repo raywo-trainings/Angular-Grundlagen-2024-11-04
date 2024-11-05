@@ -1,6 +1,7 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RecipeViewComponent} from '../recipe-view/recipe-view.component';
 import {RecipeService} from '../../services/recipe.service';
+import {Recipe} from '../../models/Recipe.model';
 
 
 @Component({
@@ -12,10 +13,15 @@ import {RecipeService} from '../../services/recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
 
   private recipeService: RecipeService = inject(RecipeService);
 
-  protected recipes = this.recipeService.getAllRecipes();
+  protected recipes: Recipe[] = []
 
+
+  public ngOnInit() {
+    this.recipeService.getAllRecipes()
+      .subscribe(recipes => this.recipes = recipes)
+  }
 }
