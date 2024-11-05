@@ -16,3 +16,18 @@ export interface Recipe {
   duration: Duration
 
 }
+
+
+export interface RecipeDTO {
+
+  id?: string
+  name: string
+  img: string
+  portions: number
+  lastEdited: string
+  ingredients: Ingredient[]
+  preparation: string
+  level_of_difficulty: Difficulty
+  duration: Duration
+
+}

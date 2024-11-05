@@ -1,7 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Recipe} from '../models/Recipe.model';
-import {Observable} from 'rxjs';
+import {Recipe, RecipeDTO} from '../models/Recipe.model';
+import {map, Observable} from 'rxjs';
+import {mapRecipeDTOToRecipe} from '../mappings/recipe.mappings';
 
 
 @Injectable({
@@ -14,6 +15,11 @@ export class RecipeService {
 
 
   public getAllRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.apiUrl)
+    return this.http.get<RecipeDTO[]>(this.apiUrl)
+      .pipe(
+        map(recipeDTOs => recipeDTOs.map(mapRecipeDTOToRecipe))
+        // folgende Zeile ist funktional identisch zur obigen Zeile
+        // map(recipeDTOs => recipeDTOs.map(dto => mapRecipeDTOToRecipe(dto)))
+      )
   }
 }
