@@ -22,6 +22,7 @@ enum Difficulty {
 
 export const recipes = [
     {
+      //TODO: Add id to every record!
         name: 'Pizza',
         img: '/recipe_pictures/pizza.jpg',
         servings: 4,
