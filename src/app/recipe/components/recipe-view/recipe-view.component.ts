@@ -1,4 +1,5 @@
 import {Component, input} from '@angular/core';
+import {Recipe} from '../../models/Recipe.model';
 
 @Component({
   selector: 'app-recipe-view',
@@ -9,6 +10,6 @@ import {Component, input} from '@angular/core';
 })
 export class RecipeViewComponent {
 
-  public recipe = input.required<any>()
+  public recipe = input.required<Recipe>()
 
 }
