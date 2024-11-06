@@ -23,5 +23,10 @@ export const routes: Routes = [
     path: 'recipes/:recipeId',
     component: RecipeDetailComponent,
     title: 'Rezept'
+  },
+  {
+    path: 'recipes/:recipeId/edit',
+    component: RecipeEditComponent,
+    title: 'Rezept'
   }
 ];
