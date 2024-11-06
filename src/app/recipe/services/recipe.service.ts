@@ -62,7 +62,7 @@ export class RecipeService {
   private getUrl(identifier?: RecipeIdentifier): string {
     let id = this.extractID(identifier)
 
-    return `${(environment.apiEndpoint)}${id ? '/' + id : ""}`
+    return `${(environment.apiEndpoint)}/recipes${id ? '/' + id : ""}`
   }
 
 
