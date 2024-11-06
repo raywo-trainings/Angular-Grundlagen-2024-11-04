@@ -1,0 +1,24 @@
+<div>
+  <img class="banner-image" src="{{recipe().img}}" alt="Bild zum Rezept">
+
+  <h2>{{ recipe().name }}</h2>
+
+  <div class="mb-2 mt-2">
+    <div class="flex flex-justify-content-between">
+      <app-recipe-info-view [recipe]="recipe()"/>
+
+      <a [routerLink]="['/recipes', recipe().id, 'edit']"
+      class="btn btn-secondary">
+        <fa-icon [icon]="faEdit"></fa-icon>
+        Bearbeiten
+      </a>
+    </div>
+  </div>
+
+  <app-recipe-ingredients-list [ingredients]="recipe().ingredients"
+                               [servings]="recipe().servings"/>
+
+  <h3>Zubereitung</h3>
+  <p>{{ recipe().preparation }}</p>
+
+</div>

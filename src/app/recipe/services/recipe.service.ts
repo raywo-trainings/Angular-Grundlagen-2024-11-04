@@ -5,6 +5,7 @@ import {catchError, map, Observable, throwError} from 'rxjs';
 import {mapRecipeDTOToRecipe, mapRecipeToRecipeDTO} from '../mappings/recipe.mappings';
 import {createToast} from '../../toasts/models/toast.model';
 import {ToastService} from '../../toasts/components/services/toast.service';
+import {environment} from '../../../environments/environment';
 
 
 type RecipeIdentifier = Recipe | string
@@ -20,7 +21,7 @@ export class RecipeService {
 
 
   public getAllRecipes(): Observable<Recipe[]> {
-    return this.http.get<RecipeDTO[]>(this.apiUrl)
+    return this.http.get<RecipeDTO[]>(this.getUrl())
       .pipe(
         map(recipeDTOs => recipeDTOs.map(mapRecipeDTOToRecipe)),
         // folgende Zeile ist funktional identisch zur obigen Zeile
@@ -71,7 +72,7 @@ export class RecipeService {
   private getUrl(identifier?: RecipeIdentifier): string {
     let id = this.extractID(identifier)
 
-    return `http://localhost:3000/recipes${id ? '/' + id : ""}`
+    return `${(environment.apiEndpoint)}/recipes${id ? '/' + id : ""}`
   }
 
 
