@@ -434,6 +434,36 @@
         }
       ],
       "preparation": "Schmiere die Butter auf’s Brot."
+    },
+    {
+      "id": "9c9b",
+      "name": "mein neues Rezept",
+      "img": "/recipe_pictures/default.jpg",
+      "portions": 1,
+      "lastEdited": "2024-11-06T13:09:07.593Z",
+      "ingredients": [
+        {
+          "name": "Apfel",
+          "unit": "",
+          "quantity": 1
+        },
+        {
+          "name": "Birne",
+          "unit": "",
+          "quantity": 1
+        },
+        {
+          "name": "Mango",
+          "unit": "",
+          "quantity": 1
+        }
+      ],
+      "preparation": "Schmecken lassen!",
+      "level_of_difficulty": "Einfach",
+      "duration": {
+        "value": 0,
+        "unit": "Min."
+      }
     }
   ]
 }

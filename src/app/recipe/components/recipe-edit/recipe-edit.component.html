@@ -1,0 +1,149 @@
+<h2 class="mb-2">neues Rezept</h2>
+
+<form class="form"
+      [formGroup]="recipeForm"
+      (ngSubmit)="onSubmit()"
+      #form=ngForm>
+
+  <div class="form-group">
+    <label for="nameField">Bezeichnung</label>
+    <input type="text"
+           id="nameField"
+           class="form-control"
+           formControlName="name"
+           appMarkInvalid>
+    <div class="error-feedback">
+      Bitte gib einen Namen ein! (Mindestens 3 Zeichen lang.)
+    </div>
+  </div>
+
+  <h3 class="mb-1 border-top pt-1">Dauer</h3>
+  <div [formGroup]="recipeForm.controls.duration"
+       class="flex-container">
+    <div class="form-group">
+      <label for="durationValueField">Dauer</label>
+      <input type="number"
+             id="durationValueField"
+             class="form-control"
+             formControlName="value"
+             appMarkInvalid>
+      <div class="error-feedback">
+        Bitte gib eine Zahl größer 1 und kleiner 120 ein.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="durationValueField">Einheit</label>
+      <select id="durationUnitField"
+              class="form-control"
+              formControlName="unit">
+        @for (option of timeUnitOptions; track $index) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <h3 class="mb-1 border-top pt-1">Schwierigkeitsgrad</h3>
+  <div class="form-group">
+    <label for="difficultyField" class="visually-hidden">Schwierigkeitsgrad</label>
+    <select id="difficultyField"
+            class="form-control"
+            formControlName="difficulty">
+      @for (option of difficultyOptions; track $index) {
+        <option [value]="option.value">{{ option.label }}</option>
+      }
+    </select>
+  </div>
+
+  <h3 class="mb-1 border-top pt-1">Zutaten</h3>
+  <div class="form-group">
+    <label for="portionsField">Portionen</label>
+    <input id="portionsField"
+           type="number"
+           class="form-control"
+           formControlName="servings"
+           appMarkInvalid>
+    <div class="error-feedback">
+      Bitte gib eine Zahl zwischen 1 und 10 ein.
+    </div>
+  </div>
+
+  <ng-container formArrayName="ingredients">
+    @for (ingredientForm of recipeForm.controls.ingredients.controls; track $index) {
+      <div class="flex-container" [formGroup]="ingredientForm">
+        <div class="form-group">
+          <label for="ingredientNameField">Zutat</label>
+          <input id="ingredientNameField"
+                 class="form-control"
+                 formControlName="name"
+                 appMarkInvalid>
+          <div class="error-feedback">
+            Bitte gib eine Bezeichnung ein. (Mindestens 3, höchstens 50 Zeichen.)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ingredientQuantityField">Anzahl</label>
+          <input id="ingredientQuantityField"
+                 class="form-control"
+                 formControlName="quantity"
+                 appMarkInvalid>
+          <div class="error-feedback">
+            Bitte gib eine Menge von mindestens 0,1 an.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ingredientUnitField">Einheit</label>
+          <select id="ingredientUnitField"
+                  class="form-control"
+                  formControlName="unit"
+                  appMarkInvalid>
+            @for (option of portionUnitOptions; track $index) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
+        </div>
+
+        @if ($index > 1) {
+          <button (click)="removeIngredientFormGroup($index)"
+                  type="button"
+                  class="btn btn-danger">
+            Zutat löschen
+          </button>
+        }
+      </div>
+    }
+
+    <div>
+      <button type="button" class="btn btn-primary" (click)="addIngredientFormGroup()">
+        weitere Zutat
+      </button>
+    </div>
+  </ng-container>
+
+  <h3 class="mb-1 border-top pt-1">Zubereitung</h3>
+  <div class="form-group">
+    <label for="preparationField" class="visually-hidden">Anweisungen</label>
+    <textarea id="preparationField"
+              class="form-control"
+              formControlName="preparation"
+              appMarkInvalid>
+    </textarea>
+    <div class="error-feedback">
+      Bitte gib einen Text mit mindestens 10 Zeichen ein.
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <button type="button"
+            class="btn btn-secondary"
+            (click)="onCancel()">
+      Abbrechen
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Speichern
+    </button>
+  </div>
+</form>
