@@ -3,8 +3,14 @@
 
   <h2>{{ recipe().name }}</h2>
 
-  <div class="mb-2 mt-2">
+  <div class="mb-2 mt-2 flex-container flex-justify-content-between">
     <app-recipe-info-view [recipe]="recipe()"/>
+
+    <a [routerLink]="['/recipes', recipe().id, 'edit']"
+       class="btn btn-secondary">
+      <fa-icon [icon]="faPencilAlt"></fa-icon>
+      Bearbeiten
+    </a>
   </div>
 
   <app-recipe-ingredients-list [ingredients]="recipe().ingredients"
