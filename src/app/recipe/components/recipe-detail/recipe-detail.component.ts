@@ -1,17 +1,22 @@
 import {Component, effect, inject, input, signal, untracked, WritableSignal} from '@angular/core';
 import {createEmptyRecipe, Recipe} from '../../models/Recipe.model';
 import {RecipeService} from '../../services/recipe.service';
+import {RecipeInfoViewComponent} from '../recipe-info-view/recipe-info-view.component';
+import {RecipeIngredientsListComponent} from '../recipe-ingredients-list/recipe-ingredients-list.component';
 
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [],
+  imports: [
+    RecipeInfoViewComponent,
+    RecipeIngredientsListComponent
+  ],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.scss'
 })
 export class RecipeDetailComponent {
 
-  private service = inject(RecipeService)
+  private readonly service = inject(RecipeService)
   protected recipe: WritableSignal<Recipe> = signal<Recipe>(createEmptyRecipe())
   public recipeId = input.required<string>()
 

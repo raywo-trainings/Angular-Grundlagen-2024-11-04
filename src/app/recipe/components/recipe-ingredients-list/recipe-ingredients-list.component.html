@@ -1,0 +1,12 @@
+<h3>Zutaten</h3>
+
+für {{ servings() }} Portionen
+
+<ul class="ingredients">
+  @for (ingredient of ingredients(); track $index) {
+    <li>
+      <strong class="ingredient">{{ ingredient.name }}</strong>
+      <span class="quantity">{{ ingredient.quantity }} {{ ingredient.unit }}</span>
+    </li>
+  }
+</ul>
