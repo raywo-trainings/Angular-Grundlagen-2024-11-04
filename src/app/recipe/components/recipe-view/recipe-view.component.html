@@ -9,4 +9,8 @@
     <p><strong>Schwierigkeit:</strong> {{ recipe().difficulty }}</p>
     <p><strong>Dauer:</strong> {{ recipe().duration.value }} {{ recipe().duration.unit }}</p>
   </div>
+
+  <div class="card-footer">
+    <a [routerLink]="['/recipes', recipe().id]" class="btn btn-primary">Details anzeigen</a>
+  </div>
 </div>
